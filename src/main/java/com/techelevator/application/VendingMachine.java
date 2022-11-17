@@ -9,7 +9,10 @@ public class VendingMachine
     {
         UserOutput userOutput = new UserOutput();
         UserInput userInput = new UserInput();
+        ItemManager items = new ItemManager();
 
+        VendingMachineFileInput fileInput = new VendingMachineFileInput();
+        fileInput.read(items);
         while(true)
         {
             userOutput.displayHomeScreen();
