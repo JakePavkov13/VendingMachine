@@ -10,10 +10,10 @@ public class VendingMachine
         UserOutput userOutput = new UserOutput();
         UserInput userInput = new UserInput();
         ItemManager items = new ItemManager();
-
         VendingMachineFileInput fileInput = new VendingMachineFileInput();
-
-        fileInput.read(items);
+        //fileInput.read(items);
+        PurchaseMenu optionsForPurchasing = new PurchaseMenu();
+        MoneyManagement getMoneyFile = new MoneyManagement();
 
         while(true)
         {
@@ -27,7 +27,10 @@ public class VendingMachine
             }
             else if(choice.equals("purchase")) {
                 // make a purchase
-                System.out.println("Please insert your money in 1, 5, 10, or 20$ increments");
+                optionsForPurchasing.Display();
+                //System.out.println("Please insert your money in 1, 5, 10, or 20$ increments");
+                //getMoneyFile.getMoney();
+                //System.out.println("you have " + getMoneyFile.getMoney() + "$");
 
             }
             else if(choice.equals("exit"))

@@ -46,12 +46,17 @@ public class Item {
     @Override
     public String toString() {
         return "Item: " +
-                 itemType + '\'' +
-                ": " + location + '\'' +
+                 itemType +
+                ": " + location +
                 ": " + price +
-                ": " + itemName + '\'' +
-                ": quantity - " + quantity ;
+                ": " + itemName +
+                ": " + quantity + " in stock";
     }
+
+    public String toString(String message){
+        return itemName + " " +message;
+    }
+
     public String sound (){
         if (itemType.equalsIgnoreCase("Candy")) {
             return "Sugar, Sugar, so Sweet!";

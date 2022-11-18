@@ -32,7 +32,9 @@ public class ItemManager {
         //System.out.println(values);
         for (Map.Entry<String, Item> mp : displayMap.entrySet()){
             //String mpValue = mp.toString();
-            System.out.println(mp.getKey() + " " + mp.getValue().toString() );
+            Item currentItem = mp.getValue();
+            System.out.println(mp.getKey() + " " + currentItem.toString() );
+            //System.out.println(currentItem.toString("this is the current message"));
 
             //String str = displayMap.toString();
             //System.out.println(str);
