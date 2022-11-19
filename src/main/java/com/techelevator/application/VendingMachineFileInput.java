@@ -32,7 +32,6 @@ public class VendingMachineFileInput {
 
                 items.mapMaker(letterNumber, eachItem);
 
-
                 }
 
 

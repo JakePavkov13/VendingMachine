@@ -11,7 +11,7 @@ public class VendingMachine
         UserInput userInput = new UserInput();
         ItemManager items = new ItemManager();
         VendingMachineFileInput fileInput = new VendingMachineFileInput();
-        //fileInput.read(items);
+        fileInput.read(items);
         PurchaseMenu optionsForPurchasing = new PurchaseMenu();
         MoneyManagement getMoneyFile = new MoneyManagement();
 
@@ -22,12 +22,12 @@ public class VendingMachine
 
             if(choice.equals("display"))
             {
-                 items.displayValues();
+                 items.displayValues(items.getDisplayMap());
                 // display the vending machine slots
             }
             else if(choice.equals("purchase")) {
                 // make a purchase
-                optionsForPurchasing.Display();
+                optionsForPurchasing.Display(items.getDisplayMap());
                 //System.out.println("Please insert your money in 1, 5, 10, or 20$ increments");
                 //getMoneyFile.getMoney();
                 //System.out.println("you have " + getMoneyFile.getMoney() + "$");

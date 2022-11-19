@@ -1,8 +1,5 @@
 package com.techelevator.models;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Item {
     private String itemType;
     private String location;
@@ -11,6 +8,9 @@ public class Item {
     private int quantity = 6;
     //private List<String[]> items = new ArrayList<>();
 
+
+
+
     public Item(String letterNumber, String itemName, double price, String attribute) {
         this.location = letterNumber;
         this.itemName = itemName;
@@ -18,6 +18,7 @@ public class Item {
         this.itemType = attribute;
 
     }
+
 
     public String getItemType() {
         return itemType;
@@ -53,9 +54,9 @@ public class Item {
                 ": " + quantity + " in stock";
     }
 
-    public String toString(String message){
-        return itemName + " " +message;
-    }
+//    public String toString(String message){
+//        return itemName + " " +message;
+//    }
 
     public String sound (){
         if (itemType.equalsIgnoreCase("Candy")) {

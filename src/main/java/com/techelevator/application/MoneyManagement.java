@@ -12,6 +12,7 @@ public class MoneyManagement {
 
     public BigDecimal getMoney(){
         Scanner userInput = new Scanner(System.in);
+        System.out.println("Please insert your money in whole dollar amounts");
         String userStringMoney = userInput.nextLine();
         //Double.parseDouble(userStringMoney);
         BigDecimal hopeThisWorksBigDecimal = new BigDecimal(userStringMoney).setScale(2, RoundingMode.HALF_UP);

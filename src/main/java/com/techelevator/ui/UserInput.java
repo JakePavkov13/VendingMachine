@@ -12,6 +12,21 @@ import java.util.Scanner;
  */
 public class UserInput {
     private Scanner scanner = new Scanner(System.in);
+    private String[] forUserInput;
+
+    public String[] userInput(){
+        String userInput = scanner.nextLine();
+
+        String[] aVariableName = userInput.split(" " );
+
+        this.forUserInput = aVariableName;
+
+        return aVariableName;
+    }
+
+    public String[] getForUserInput() {
+        return forUserInput;
+    }
 
     public String getHomeScreenOption() {
         System.out.println("What would you like to do?");
@@ -66,4 +81,5 @@ public class UserInput {
         }
 
     }
+
 }
