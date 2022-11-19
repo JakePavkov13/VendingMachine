@@ -12,6 +12,22 @@ public class PurchaseMenu {
     MoneyManagement moneyManagementForPurchaseMenu = new MoneyManagement();
     ItemManager items = new ItemManager();
 
+    public void purchase(Map<String, Item> inventoryMap, String selectedItemKey){
+
+        Item selectedItem = inventoryMap.get(selectedItemKey);
+        int ourQuantity = selectedItem.getQuantity();
+        if (ourQuantity > 0) {
+           if (moneyManagementForPurchaseMenu.deduction(selectedItem)) {
+               selectedItem.setQuantity(ourQuantity - 1);
+               items.mapMaker(selectedItemKey, selectedItem);
+           }else {
+               System.out.println("Not enough money");
+           }
+        }else{
+            System.out.println("Not enough stock");
+        }
+
+    }
     public void Display(Map<String, Item> inventoryMap){
         String choice = purchaseDisplayOptions.getPurchaseScreenOption();
 
@@ -25,17 +41,14 @@ public class PurchaseMenu {
             messagesToUser.displayMessage("Please enter the letter number combination of what you wish to buy");
 
             purchaseDisplayOptions.userInput();
-            String selectedItemKey = purchaseDisplayOptions.getForUserInput()[0];
-            Item selectedItem = inventoryMap.get(selectedItemKey);
-            int ourQuantity = selectedItem.getQuantity();
-            if (ourQuantity > 0){
-                selectedItem.setQuantity(ourQuantity - 1);
-                items.mapMaker(selectedItemKey, selectedItem);
-            }
-            //item.setDisplayMap();
+            String selectedItemKey = purchaseDisplayOptions.getForUserInput();
+            purchase(inventoryMap, selectedItemKey);
+            System.out.println(" you have " + moneyManagementForPurchaseMenu.getUserBalance() + " left");
             Display(inventoryMap);
-            // moneyManagementForPurchaseMenu.deduction();
+
+
         }else if (choice.equalsIgnoreCase("Finalize")){
+            moneyManagementForPurchaseMenu.returnChange();
             System.out.println("Your remaining balance is " + moneyManagementForPurchaseMenu.getUserBalance());
         }
     }

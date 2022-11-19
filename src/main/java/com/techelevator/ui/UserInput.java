@@ -12,19 +12,17 @@ import java.util.Scanner;
  */
 public class UserInput {
     private Scanner scanner = new Scanner(System.in);
-    private String[] forUserInput;
+    private String forUserInput;
 
-    public String[] userInput(){
+    public String userInput(){
         String userInput = scanner.nextLine();
 
-        String[] aVariableName = userInput.split(" " );
+        this.forUserInput = userInput;
 
-        this.forUserInput = aVariableName;
-
-        return aVariableName;
+        return userInput;
     }
 
-    public String[] getForUserInput() {
+    public String getForUserInput() {
         return forUserInput;
     }
 
