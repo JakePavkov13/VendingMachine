@@ -11,6 +11,8 @@ public class PurchaseMenu {
     UserInput purchaseDisplayOptions = new UserInput();
     MoneyManagement moneyManagementForPurchaseMenu = new MoneyManagement();
     ItemManager items = new ItemManager();
+    AuditLog audit = new AuditLog();
+
 
     public void purchase(Map<String, Item> inventoryMap, String selectedItemKey){
 
@@ -20,6 +22,7 @@ public class PurchaseMenu {
            if (moneyManagementForPurchaseMenu.deduction(selectedItem)) {
                selectedItem.setQuantity(ourQuantity - 1);
                items.mapMaker(selectedItemKey, selectedItem);
+               audit.writeReciept(selectedItemKey, selectedItem, moneyManagementForPurchaseMenu);
            }else {
                System.out.println("Not enough money");
            }
