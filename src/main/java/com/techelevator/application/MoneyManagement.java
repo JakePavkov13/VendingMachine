@@ -8,7 +8,7 @@ import java.math.RoundingMode;
 import java.util.Scanner;
 
 public class MoneyManagement {
-
+    AuditLog auditLog = new AuditLog();
     private BigDecimal userBalance;
 
     public MoneyManagement() {
@@ -24,6 +24,7 @@ public class MoneyManagement {
         BigDecimal hopeThisWorksBigDecimal = new BigDecimal(userStringMoney).setScale(2, RoundingMode.HALF_UP);
         //System.out.println("you have " + hopeThisWorksBigDecimal + "$");
         this.userBalance = hopeThisWorksBigDecimal;
+        auditLog.moneyFed(userBalance);
         return hopeThisWorksBigDecimal;
     }
 
@@ -70,7 +71,7 @@ public class MoneyManagement {
             userBalance = userBalance.subtract(nickle);
         }
         System.out.println("Your change is " + dollarCounter + "dollars " + quarterCounter + "quarters " + dimeCounter + "dimes " + nickleCounter + "nickles");
-
+        auditLog.returnChange(dollarCounter,quarterCounter,dimeCounter,nickleCounter,userBalance);
         this.userBalance = BigDecimal.ZERO;
 
 
