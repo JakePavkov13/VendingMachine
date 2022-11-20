@@ -2,35 +2,38 @@ package com.techelevator.application;
 
 import com.techelevator.models.Item;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class AuditLog {
+    String auditText = "Audit.txt";
+    File inputFile = new File(auditText);
     public void writeReciept(String selectedItemKey, Item selectedItem, MoneyManagement userBalance) {
         LocalDateTime dateTime = LocalDateTime.now();
 
         DateTimeFormatter dateTimeFormat = DateTimeFormatter.ofPattern("E MM/dd/YYYY hh:mm:ss a");
 
-        String auditText = "Audit.txt";
+
 
         String currentDateTime = dateTime.format(dateTimeFormat);
 
         String itemSelected = selectedItem.getItemName();
 
-        File inputFile = new File(auditText);
+
 
         BigDecimal userBalanceUpdated = userBalance.getUserBalance();
 
         BigDecimal startingBalance = userBalanceUpdated.add(new BigDecimal(selectedItem.getPrice()+ "" ));
 
-        try (PrintWriter printWriter = new PrintWriter(auditText)) {
-            printWriter.println(currentDateTime + " " + itemSelected + " " + startingBalance + " " + " " + userBalanceUpdated);
-            printWriter.println();
+        try (PrintWriter printWriter = new PrintWriter(new FileOutputStream(inputFile, true))) {
+            //new FileOutputStream(auditText, true);
+            printWriter.append("\n" + currentDateTime + " " + itemSelected + " " + startingBalance + " " + " " + userBalanceUpdated);
+           // printWriter.flush();
+
+
+            printWriter.close();
         } catch (IOException e) {
         }
     }
@@ -39,31 +42,39 @@ public class AuditLog {
 
         DateTimeFormatter dateTimeFormat = DateTimeFormatter.ofPattern("E MM/dd/YYYY hh:mm:ss a");
 
-        String auditText = "Audit.txt";
+        //String auditText = "Audit.txt";
 
         String currentDateTime = dateTime.format(dateTimeFormat);
 
-        File inputFile = new File(auditText);
+        //File inputFile = new File(auditText);
 
-        try(PrintWriter printWriter = new PrintWriter(auditText)){
-            printWriter.println(currentDateTime + " MONEY FED " + "$" + userBalance + "  $" + userBalance);
+        try(PrintWriter printWriter = new PrintWriter(new FileOutputStream(inputFile, true))){
+            //
+            printWriter.append("\n" + currentDateTime + " MONEY FED " + "$" + userBalance + "  $" + userBalance);
+            //printWriter.flush();
+
+            printWriter.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
     }
-    public void returnChange(int dollarCounter, int quarterCounter, int dimeCounter, int nickleCounter, BigDecimal userBalance){
+    public void returnChange(String returnChange){
         LocalDateTime dateTime = LocalDateTime.now();
 
         DateTimeFormatter dateTimeFormat = DateTimeFormatter.ofPattern("E MM/dd/YYYY hh:mm:ss a");
 
-        String auditText = "Audit.txt";
+        //String auditText = "Audit.txt";
 
         String currentDateTime = dateTime.format(dateTimeFormat);
 
-        File inputFile = new File(auditText);
+        //File inputFile = new File(auditText);
 
-        try (PrintWriter printWriter = new PrintWriter(auditText)){
-            printWriter.println(currentDateTime + " CHANGE GIVEN: " + dollarCounter + " Dollar(s), " + quarterCounter + " Quarter(s), " + dimeCounter + " Dime(s), " + nickleCounter + " Nickle(s)" + " $" + userBalance );
+        try (PrintWriter printWriter = new PrintWriter(new FileOutputStream(inputFile, true))) {
+            //
+            printWriter.append("\n" + currentDateTime + returnChange );
+            //printWriter.flush();
+
+            printWriter.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }

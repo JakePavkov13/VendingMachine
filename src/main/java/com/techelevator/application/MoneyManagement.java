@@ -70,8 +70,9 @@ public class MoneyManagement {
             nickleCounter += 1;
             userBalance = userBalance.subtract(nickle);
         }
-        System.out.println("Your change is " + dollarCounter + "dollars " + quarterCounter + "quarters " + dimeCounter + "dimes " + nickleCounter + "nickles");
-        auditLog.returnChange(dollarCounter,quarterCounter,dimeCounter,nickleCounter,userBalance);
+        String returnChange = "Your change is " + dollarCounter + "dollars " + quarterCounter + "quarters " + dimeCounter + "dimes " + nickleCounter + "nickles";
+        System.out.println(returnChange);
+        auditLog.returnChange(returnChange);
         this.userBalance = BigDecimal.ZERO;
 
 
