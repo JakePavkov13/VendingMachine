@@ -18,10 +18,14 @@ public class PurchaseMenu {
 
         Item selectedItem = inventoryMap.get(selectedItemKey);
         int ourQuantity = selectedItem.getQuantity();
+        String itemType = selectedItem.getItemType();
         if (ourQuantity > 0) {
            if (moneyManagementForPurchaseMenu.deduction(selectedItem)) {
                selectedItem.setQuantity(ourQuantity - 1);
                items.mapMaker(selectedItemKey, selectedItem);
+
+               //selectedItem.setItemType(selectedItem);
+               selectedItem.sound(itemType);
                audit.writeReciept(selectedItemKey, selectedItem, moneyManagementForPurchaseMenu);
            }else {
                System.out.println("Not enough money");

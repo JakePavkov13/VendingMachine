@@ -47,7 +47,7 @@ public class UserInput {
         } else if (option.equals("E")) {
             return "exit";
         } else {
-            return "";
+            return "Were not sure what happened, please try again";
         }
 
     }

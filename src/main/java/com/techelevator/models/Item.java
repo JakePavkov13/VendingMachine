@@ -19,6 +19,9 @@ public class Item {
 
     }
 
+    public Item(String itemType) {
+        this.itemType = itemType;
+    }
 
     public String getItemType() {
         return itemType;
@@ -44,6 +47,10 @@ public class Item {
         this.quantity = quantity;
     }
 
+    public void setItemType(String itemType) {
+        this.itemType = itemType;
+    }
+
     @Override
     public String toString() {
         return "Item: " +
@@ -58,15 +65,17 @@ public class Item {
 //        return itemName + " " +message;
 //    }
 
-    public String sound (){
+    public String sound (String itemType){
         if (itemType.equalsIgnoreCase("Candy")) {
-            return "Sugar, Sugar, so Sweet!";
+            System.out.println( "Sugar, Sugar, so Sweet!");
         } else if (itemType.equalsIgnoreCase("munchy")){
-            return "Munchy, Munchy, so Good!";
+            System.out.println( "Munchy, Munchy, so Good!");
         }else if (itemType.equalsIgnoreCase("drink")){
-            return "Drinky, Drinky, Slurp Slurp!";
+            System.out.println( "Drinky, Drinky, Slurp Slurp!");
         }else if (itemType.equalsIgnoreCase("gum")){
-            return "Chewy, Chewy, Lots O Bubbles!";
-        }return "we're not sure what you ordered";
+            System.out.println( "Chewy, Chewy, Lots O Bubbles!");
+        }else
+        System.out.println( "we're not sure what you ordered");
+        return "were not sure what happened";
     }
 }

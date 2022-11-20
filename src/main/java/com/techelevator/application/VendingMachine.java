@@ -35,6 +35,7 @@ public class VendingMachine
             }
             else if(choice.equals("exit"))
             {
+                System.out.println("Goodbye");
                 // good bye
                 break;
             }
