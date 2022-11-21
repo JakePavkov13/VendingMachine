@@ -3,3 +3,8 @@ Sun 11/20/2022 05:52:29 PM CHANGE GIVEN: 6 Dollar(s), 0 Quarter(s), 1 Dime(s), 1
 Sun 11/20/2022 06:00:30 PM MONEY FED $10.00  $10.00
 Sun 11/20/2022 06:00:37 PM Chippos 10.00  6.15
 Sun 11/20/2022 06:00:40 PMYour change is 6dollars 0quarters 1dimes 1nickles
+Sun 11/20/2022 07:00:32 PM MONEY FED $10.00  $10.00
+Sun 11/20/2022 07:00:55 PM Popcorn 11.00  9.25
+Sun 11/20/2022 07:02:00 PM MONEY FED $10.00  $10.00
+Sun 11/20/2022 07:02:07 PM Popcorn 10.00  8.25
+Sun 11/20/2022 07:02:19 PM Popcorn 9.25  7.50

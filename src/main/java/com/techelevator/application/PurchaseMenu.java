@@ -12,7 +12,7 @@ public class PurchaseMenu {
     MoneyManagement moneyManagementForPurchaseMenu = new MoneyManagement();
     ItemManager items = new ItemManager();
     AuditLog audit = new AuditLog();
-
+    private int saleCounter = 1;
 
     public void purchase(Map<String, Item> inventoryMap, String selectedItemKey){
 
@@ -20,7 +20,8 @@ public class PurchaseMenu {
         int ourQuantity = selectedItem.getQuantity();
         String itemType = selectedItem.getItemType();
         if (ourQuantity > 0) {
-           if (moneyManagementForPurchaseMenu.deduction(selectedItem)) {
+           if (moneyManagementForPurchaseMenu.deduction(selectedItem, saleCounter)) {
+               this.saleCounter ++;
                selectedItem.setQuantity(ourQuantity - 1);
                items.mapMaker(selectedItemKey, selectedItem);
 

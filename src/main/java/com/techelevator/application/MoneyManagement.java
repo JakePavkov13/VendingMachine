@@ -28,10 +28,14 @@ public class MoneyManagement {
         return hopeThisWorksBigDecimal;
     }
 
-    public boolean deduction(Item itemToPurchase) {
+    public boolean deduction(Item itemToPurchase, int saleCounter) {
 
         BigDecimal itemCost = new BigDecimal(String.valueOf(itemToPurchase.getPrice()));
         if (userBalance.compareTo(itemCost) == 1 || userBalance.compareTo(itemCost) == 0) {
+
+            if (saleCounter % 2 == 0){
+                itemCost = itemCost.subtract(BigDecimal.ONE);
+            }
             this.userBalance = userBalance.subtract(itemCost);
 
             return true;
